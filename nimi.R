@@ -15,3 +15,5 @@ library("dplyr")
 library(reshape2)
 toetus = read.csv2("./Data/toetuse_saajad.csv")
 
+#install.packages("rvest")
+library(rvest)
