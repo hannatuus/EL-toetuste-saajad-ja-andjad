@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "url1 <- \"http://register.fin.ee/register/viewasutus.php?regkood=\"\nx1<- c()\ndata1<- c()\n\nfor(regkood in registrikood){\n  leht1<-read_html(paste0(url1, regkood))\n  x1[regkood]=paste0(url1, regkood)\n  text1<-leht1 %>% \n    html_nodes(\".table_system_fieldset td\") %>%\n    html_text()\n  data1<-c(data1,text1)\n  print(regkood)\n}\n\nsequ1<-which(grepl(\"@\", data1)) #finds the sequence of lines that include \"@\" (1 per institution)\ninterval1<- abs(sequ1[1]-sequ1[2]) #interval is 35\n\nintegers1<-head(integers,-n)\n\ntegevusala_kood <- data1[30+integers1*interval1] #tegevusala kood\ntegevusala_nimetus <- data1[33+integers1*interval1] #tegevusala nimetus\n\naruanne1<-data.frame(registrikood, tegevusala_kood, tegevusala_nimetus)\nwrite.table(aruanne1,\"fail.csv\",sep =\";\",row.names=F)",
+    "created" : 1470295680046.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2641988310",
+    "id" : "5859240C",
+    "lastKnownWriteTime" : 1470405185,
+    "last_content_update" : 1470644111183,
+    "path" : "~/Riigiteenused/tegevusala.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

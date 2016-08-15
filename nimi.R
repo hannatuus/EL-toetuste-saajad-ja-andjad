@@ -6,7 +6,7 @@ library("devtools")
 library(riigiteenused)
 #install.packages("rjson")
 library(rjson)
-x=andmedSisse("https://www.riigiteenused.ee/api/et/all")
+omavalituste_register=andmedSisse("https://www.riigiteenused.ee/api/et/all")
 
 #install.packages("dplyr")
 library("dplyr")
@@ -17,3 +17,6 @@ toetus = read.csv2("./Data/toetuse_saajad.csv")
 
 #install.packages("rvest")
 library(rvest)
+
+#install.packages('xml2')
+library('xml2')

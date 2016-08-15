@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(\"devtools\")\ninstall_github(\"RRisto/riigiteenused\")\n\nandmedLai=andmedSisse()\nandmedPikk=andmedPikaks(andmedLai)\n\nfor (registrikood in )",
+    "created" : 1470393005510.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2636279731",
+    "id" : "D9C67C59",
+    "lastKnownWriteTime" : 1470643038,
+    "last_content_update" : 1470643038227,
+    "path" : "~/Riigiteenused/EL-toetuste-saajad-ja-andjad/registrikoodid ja asutusenimed.R",
+    "project_path" : "registrikoodid ja asutusenimed.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,28 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1470646137441.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "306FFC64",
+    "lastKnownWriteTime" : 32370120545140837,
+    "last_content_update" : 1470646137441,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "3qpka6i29w",
+        "caption" : "aruanne",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=aruanne&cache_key=3qpka6i29w",
+        "displayedObservations" : "15",
+        "environment" : "",
+        "object" : "aruanne",
+        "totalObservations" : "15",
+        "variables" : "5"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

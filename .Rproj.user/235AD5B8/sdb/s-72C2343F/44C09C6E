@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "url<-\"http://register.fin.ee/register/index.php?&asuttyyp=&regname=&tunnus=aruanded&regkoodfrom=&regkoodto=&aadr=&korgkood=&action=searchnow&out=&slimit=3000&report=72&page=\"\nomavalitsuste_register<-c()\ndata<-c()\nn<-173 #number of pages scraped\n\nfor(page in 1:n){\n  leht<-read_html(paste0(url, page))\n  omavalitsuste_register[page]=paste0(url, page)\n text<-leht %>% \n  html_nodes(\".table_system td\") %>%\n  html_text()\n data<-c(data,text)\n  print(page)\n  \nsequ<-which(grepl(\"@\", data))\ninterval<-abs(sequ[1]-sequ[2]) #11\n  \nintegers<-c(0:as.integer(length(data)/interval)) #integers, -(n-1) as n is the number of pages and on\n#every page the headings are deleted\n\nregistrikood_a<-data[1+interval*integers]\n#picks out all of the register codes without the headings\n#match(c(\"\\n\\nAsutuse registrikood\\n\"),y) = 1\nregistrikood_b<-registrikood_a[registrikood_a !=\"\\n\\nAsutuse registrikood\\n\"]\nregistrikood<-gsub(\"\\n|\\\\s+$|^\\\\s+\",\"\",registrikood_b)\n#removes noise \n\nnimi_a<-data[2+interval*integers]\n#match(c(\"\\n\\nAsutuse täisnimi\\n\"),y) = 2\nnimi_b<-nimi_a[nimi_a !=\"\\n\\nAsutuse täisnimi\\n\"]\nnimi<-gsub(\"\\n|\\\\s+$|^\\\\s+\",\"\",nimi_b)\n\n\nasukoht_a<-data[3+interval*integers] \nasukoht_b<-asukoht_a[asukoht_a !=\"\\n\\nMaakond, linn/vald, küla\\n\"]\nasukoht_c<-gsub(\"\\n|\\\\s+$|^\\\\s+\",\"\",asukoht_b)\nasukoht_d<-gsub(\".*,\",\"\", asukoht_c) #removes everything before comma (incl comma)\nmaakond<-gsub(\"^\\\\s+\",\"\",asukoht_d) #removes whitespace from the beginning of the string\n\nlopetamise_kuupaev_a<-data[match(c(\"\\n\\nLõpet.kp\\n\"),data)+interval*integers]\nlopetamise_kuupaev_b<-lopetamise_kuupaev_a[lopetamise_kuupaev_a !=\"\\n\\nLõpet.kp\\n\"]\nlopetamise_kuupaev<-gsub(\"\\n|\\\\s+$|^\\\\s+\",\"\",lopetamise_kuupaev_b)\n\nemail_a<-data[match(c(\"\\n\\nE-mail\\n\"),data)+interval*integers]\nemail_b<-email_a[email_a !=\"\\n\\nE-mail\\n\"]\nemail<-gsub(\"\\n|\\\\s+$|^\\\\s+\",\"\",email_b)\n}\n\naruanne<-data.frame(registrikood, nimi, maakond, lopetamise_kuupaev, email)\nwrite.table(aruanne,\"fail.csv\",sep =\";\",row.names=F)\n\n",
+    "created" : 1467032557582.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1522473911",
+    "id" : "44C09C6E",
+    "lastKnownWriteTime" : 1470652137,
+    "last_content_update" : 1470652286049,
+    "path" : "~/Riigiteenused/EL-toetuste-saajad-ja-andjad/kraapimine.R",
+    "project_path" : "kraapimine.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
